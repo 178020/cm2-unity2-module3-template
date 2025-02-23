@@ -42,6 +42,25 @@ public class GuessTheNumberScript : MonoBehaviour
         guessText.text = "You guessed " + guess + "\n";
         
         // LESSON 3-1: Add code below.
+        int intGuess = int.Parse(guess);
+        if(intGuess == currentNumber)
+        {
+            score ++;
+            guessText.text = "You guessed the number correctly!";
+            currentNumber = GenerateRandomNumber();
+            GenerateHints(currentNumber);
+        }
+        else
+        {
+            if(intGuess > currentNumber)
+            {
+                guessText.text = "Your guess is too big.";
+            }
+            else
+            {
+                guessText.text = "Your guess is too small.";
+            }
+        }
     }
 
     public void GenerateHints(int chosenNumber)
@@ -49,6 +68,22 @@ public class GuessTheNumberScript : MonoBehaviour
         string hints = "";
 
         // LESSON 3-1: Add code below.
+        if(chosenNumber %2 == 0)
+        {
+            hints += "Your number is even.\n";
+        }
+        else
+        {
+            hints += "Your number is odd.\n";
+        }
+        if(chosenNumber > 50)
+        {
+            hints += "Your number is more than 50.\n";
+        }
+        else
+        {
+            hints += "Your number is less or equal to 50.\n";
+        }
 
         hintsText.text = hints;
     }
